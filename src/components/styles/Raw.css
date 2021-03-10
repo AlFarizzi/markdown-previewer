@@ -1,0 +1,27 @@
+* {
+    font-family: sans-serif;
+}
+
+.raw {
+    line-height: 30px;
+    padding:10px 25px;
+}
+.raw h2,.raw h1, .raw h3, .raw h4, .raw h5, .raw h6 {
+    margin-top: 1%;
+}
+
+.raw hr {
+    border: .5px solid lightgray;
+    margin-top: 1%;
+}
+
+.raw pre {
+    margin-top: 1%;
+    padding:0 10px;
+    background-color: rgb(248, 241, 241);
+    font-size: 13px;
+}
+
+.raw ul {
+    padding: 0 20px;
+}

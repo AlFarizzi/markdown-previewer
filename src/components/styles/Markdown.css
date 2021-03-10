@@ -1,0 +1,43 @@
+.md {
+    height: 100%;
+    overflow: hidden;
+    padding:10px;
+}
+
+.md__title {
+    width: 80%;
+    /* height: 7%; */
+    border:0;
+    padding:10px 5px;
+    border-bottom: 2px solid grey;
+    transition: 1s ease all;
+    font-size:30px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+}
+
+.md__title::placeholder {
+    font-weight: 900;
+}
+
+.md__title:focus {
+    outline: none;
+    border-bottom:2px solid rgba(12, 151, 243, 0.904);
+}
+
+.md__content {
+    margin-top: 2%;
+    padding: 10px 5px;
+    width: 80%;
+    height: 75%;
+    resize: none;
+    transition: 1s ease all;
+    border: 1px solid rgba(197, 197, 197, 0.877);
+    border-radius: 10px;
+}
+
+.md__content:focus {
+    outline: none;
+    border: 1px solid rgba(12, 151, 243, 0.904);
+    border-radius: 10px;
+}
