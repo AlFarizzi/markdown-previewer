@@ -3,6 +3,8 @@ import Raw from './components/Raw';
 import Markdown from './components/Markdown';
 import Sidebar from './components/Sidebar';
 import "./App.css";
+import { HStack, Button, Switch, FormLabel, FormControl, useClipboard } from '@chakra-ui/react';
+import { AddIcon, CopyIcon } from '@chakra-ui/icons';
 const MemoizedSidebar = React.memo(Sidebar);
 
 function App(props) {
@@ -10,6 +12,7 @@ function App(props) {
   const [title,setTitle] = useState('');
   const [text,setText] = useState('');
   const [posts,setPosts] = useState([]);
+  const {hasCopied, onCopy} = useClipboard(text);
 
   const textHandler = (text) => {
     setText(text);
@@ -73,8 +76,28 @@ function App(props) {
         
         <div className="content">
           <div className="btn__container">
-           <button className="switch__button" onClick={e => setMd(!md)}>Switch</button>
-           <button className="save__button" onClick={saveHandler} >Save</button>
+            <HStack mt={1.5}>
+              <Button 
+              colorScheme="facebook" 
+              leftIcon={<AddIcon />} 
+              size="sm" 
+              onClick={saveHandler}>Save</Button>
+
+              <Button 
+              colorScheme="facebook" 
+              leftIcon={<CopyIcon />} 
+              size="sm" 
+              onClick={onCopy}
+             >{hasCopied ? "Copied" : "Copy"}</Button>
+
+              <FormControl display="flex" alignItems="center">
+                <FormLabel mb="0">
+                  Converted Result
+                </FormLabel>
+                <Switch colorScheme="facebook" onChange={() => setMd(!md)} />
+              </FormControl>
+
+            </HStack>
           </div>
           {md 
           ? <Markdown content={text} cTitle={title} 
