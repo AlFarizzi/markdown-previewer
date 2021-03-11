@@ -3,8 +3,8 @@ import Raw from './components/Raw';
 import Markdown from './components/Markdown';
 import Sidebar from './components/Sidebar';
 import "./App.css";
-import { HStack, Button, Switch, FormLabel, FormControl, useClipboard } from '@chakra-ui/react';
-import { AddIcon, CopyIcon } from '@chakra-ui/icons';
+import { HStack, Button, Switch, FormLabel, FormControl, useClipboard, useColorMode, IconButton } from '@chakra-ui/react';
+import { AddIcon, CopyIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 const MemoizedSidebar = React.memo(Sidebar);
 
 function App(props) {
@@ -13,6 +13,7 @@ function App(props) {
   const [text,setText] = useState('');
   const [posts,setPosts] = useState([]);
   const {hasCopied, onCopy} = useClipboard(text);
+  const { colorMode, toggleColorMode } = useColorMode();
 
   const textHandler = (text) => {
     setText(text);
@@ -77,6 +78,13 @@ function App(props) {
         <div className="content">
           <div className="btn__container">
             <HStack mt={1.5}>
+              <IconButton 
+                  onClick={toggleColorMode}
+                  colorScheme="facebook"
+                  size="sm"
+                  icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
+              /> 
+
               <Button 
               colorScheme="facebook" 
               leftIcon={<AddIcon />} 
@@ -88,7 +96,7 @@ function App(props) {
               leftIcon={<CopyIcon />} 
               size="sm" 
               onClick={onCopy}
-             >{hasCopied ? "Copied" : "Copy"}</Button>
+             >{hasCopied ? "Copied" : "Copy"}</Button>      
 
               <FormControl display="flex" alignItems="center">
                 <FormLabel mb="0">
